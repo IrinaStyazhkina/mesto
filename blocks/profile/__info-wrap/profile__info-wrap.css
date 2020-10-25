@@ -1,0 +1,11 @@
+.profile__info-wrap {
+  display: flex;
+  align-items: baseline;
+}
+
+@media all and (max-width: 700px) {
+  .profile__info-wrap {
+    justify-content: center;
+    align-items: center;
+  }
+}

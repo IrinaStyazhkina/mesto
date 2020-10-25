@@ -1,0 +1,14 @@
+.page-container {
+  margin: 0 auto;
+  max-width: 882px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media all and (max-width: 935px) {
+  .page-container {
+    width: calc(100% - 27px*2);
+  }
+}

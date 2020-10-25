@@ -1,0 +1,20 @@
+.photos {
+  display: grid;
+  max-width: 882px;
+  grid-template-columns: repeat(auto-fill, 282px);
+  grid-template-rows: repeat(auto-fill, minmax(282px, 1fr));
+  gap: 21px 18px;
+  margin: 0 0 66px;
+}
+
+@media all and (max-width: 935px) {
+  .photos {
+    margin: 0 calc((100% - 582px)/2) 66px;
+  }
+}
+
+@media all and (max-width: 635px) {
+  .photos {
+    margin: 0 calc((100% - 282px)/2) 48px;
+  }
+}

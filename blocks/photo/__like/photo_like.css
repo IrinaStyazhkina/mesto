@@ -1,0 +1,9 @@
+.photo__like {
+  width: 21px;
+  height: 19px;
+  border: none;
+  background-color: #ffffff;
+  background-image: url("../../../images/heart.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}

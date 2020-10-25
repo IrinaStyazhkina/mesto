@@ -1,0 +1,27 @@
+.popup__close-btn {
+  transform: rotate(45deg);
+  border: none;
+  background-color: #000000;
+  width: 40.7px;
+  height: 40.7px;
+  background-image: url("../../../images/plus-sign.svg");
+  background-size: cover;
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  outline: none;
+}
+
+.popup__close-btn:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+
+@media all and (max-width: 635px) {
+  .popup__close-btn {
+    width: 26px;
+    height: 26px;
+    right: 0;
+    top: -40px;
+  }
+}
