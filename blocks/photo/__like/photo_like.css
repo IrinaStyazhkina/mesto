@@ -5,5 +5,12 @@
   background-color: #ffffff;
   background-image: url("../../../images/heart.svg");
   background-position: center;
+  background-size: contain;
   background-repeat: no-repeat;
+  transition: opacity 1s ease;
+}
+
+.photo__like:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }

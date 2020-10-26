@@ -1,5 +1,6 @@
 .profile__activity {
-  width: 318px;
+  max-width: 318px;
+  width: 100%;
   font-weight: normal;
   font-size: 18px;
   line-height: 1.22;
@@ -17,7 +18,7 @@
 
 @media all and (max-width: 635px) {
   .profile__activity {
-    width: 280px;
+    max-width: 280px;
     font-size: 14px;
     line-height: 17px;
   }
