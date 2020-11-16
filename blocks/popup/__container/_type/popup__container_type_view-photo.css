@@ -1,0 +1,7 @@
+.popup__container_type_view-photo{
+    max-width: 75vw;
+    width: auto;
+    background-color: rgba(1,1,1,0);
+    color: #ffffff;
+    top: 90px;
+}

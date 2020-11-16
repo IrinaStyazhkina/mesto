@@ -7,8 +7,8 @@
   background-image: url("../../../images/plus-sign.svg");
   background-size: cover;
   position: absolute;
-  top: -35px;
-  right: -35px;
+  top: -40px;
+  right: -40px;
   outline: none;
   transition: opacity 1s ease;
 }
@@ -23,6 +23,5 @@
     width: 26px;
     height: 26px;
     right: 0;
-    top: -40px;
   }
 }

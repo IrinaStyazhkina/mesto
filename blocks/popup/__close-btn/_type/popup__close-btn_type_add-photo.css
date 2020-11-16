@@ -1,0 +1,8 @@
+@media all and (max-width: 635px) {
+  .popup__close-btn_type_add-photo {
+    width: 30px;
+    height: 30px;
+    right: -26px;
+    top: -26px;
+  }
+}

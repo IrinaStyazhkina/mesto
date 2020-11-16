@@ -1,0 +1,5 @@
+@media all and (max-width: 635px) {
+  .popup__header_type_add-photo {
+    margin: 30px 35px 25px 20px;
+  }
+}

@@ -7,7 +7,7 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  transition: opacity 1s ease;
+  transition: opacity .2s ease;
 }
 
 .photo__like:hover {

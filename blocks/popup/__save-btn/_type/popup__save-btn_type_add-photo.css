@@ -1,0 +1,9 @@
+@media all and (max-width: 635px) {
+    .popup__save-btn_type_add-photo {
+      max-width: 200px;
+      padding: 14px 48px;
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 30px;
+    }
+  }

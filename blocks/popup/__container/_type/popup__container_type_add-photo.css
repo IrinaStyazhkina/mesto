@@ -1,0 +1,6 @@
+@media all and (max-width: 635px) {
+  .popup__container_type_add-photo {
+    max-width: 240px;
+    top: 155px;
+  }
+}

@@ -1,0 +1,19 @@
+.photo__delete {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  width: 18px;
+  height: 19.3px;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  background-image: url("../../../images/trash.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: opacity .5s ease;
+}
+
+.photo__delete:hover {
+  cursor: pointer;
+  opacity: .6;
+}

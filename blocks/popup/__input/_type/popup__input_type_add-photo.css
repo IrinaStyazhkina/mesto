@@ -1,0 +1,12 @@
+@media all and (max-width: 635px) {
+  .popup__input_type_add-photo {
+    max-width: 200px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+
+  .popup__input_type_add-photo:last-of-type {
+    margin-bottom: 36px;
+  }
+}
