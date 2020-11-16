@@ -59,9 +59,9 @@ function closePopup(popup) {
 }
 
 profileEditButton.addEventListener('click', function() {
-  openPopup(editProfilePopup);
   nameInput.value = profileName.textContent;
   activityInput.value = profileActivity.textContent;
+  openPopup(editProfilePopup);
 })
 
 editProfileClosePopupBtn.addEventListener('click', function() {
@@ -75,15 +75,17 @@ function editProfileFormSubmitHandler(evt) {
   closePopup(editProfilePopup);
 }
 
-function addNewPhotoCard(name, link, isFirstPosition) {
+  function createNewPhotoCard(name, link) {
   const photoElement = photoTemplate.cloneNode(true);
-  photoElement.querySelector('.photo__image').src = link;
+  const photoImage = photoElement.querySelector('.photo__image');
+
+  photoImage.src = link;
   photoElement.querySelector('.photo__description').textContent = name;
 
-  photoElement.querySelector('.photo__image').addEventListener('click', function(evt){
+  photoImage.addEventListener('click', function(evt){
+    viewPhotoImage.src = link;
+    viewPhotoDescription.textContent = name;
     openPopup(viewPhotoPopup);
-    viewPhotoImage.src = evt.target.src;
-    viewPhotoDescription.textContent = evt.target.parentElement.querySelector('.photo__description').textContent;
   });
 
   photoElement.querySelector('.photo__like').addEventListener('click', function(evt) {
@@ -92,18 +94,12 @@ function addNewPhotoCard(name, link, isFirstPosition) {
   photoElement.querySelector('.photo__delete').addEventListener('click', function(evt) {
     evt.target.parentElement.remove();
   })
-
-  if(isFirstPosition) {
-    photos.prepend(photoElement);
-  }
-  else {
-    photos.append(photoElement);
-  }
+  return photoElement;
 }
 
 function addPhotosSubmitHandler(evt) {
   evt.preventDefault();
-  addNewPhotoCard(placeNameInput.value, placeLinkInput.value, true);
+  photos.prepend(createNewPhotoCard(placeNameInput.value, placeLinkInput.value));
   placeNameInput.value='';
   placeLinkInput.value='';
   closePopup(addPhotoPopup);
@@ -128,7 +124,7 @@ viewPhotoPopupCLoseBtn.addEventListener('click', function() {
 
 function uploadImages() {
   initialCards.forEach((card) => {
-    addNewPhotoCard(card.name, card.link, false);
+    photos.append(createNewPhotoCard(card.name, card.link));
   })
 }
 
