@@ -3,7 +3,7 @@
   box-sizing: border-box;
   max-width: 358px;
   width: 100%;
-  margin: 0 auto;
+  margin: 48px auto 37px;
   padding: 13.66px 124px;
   color: #ffffff;
   background-color: #000000;
@@ -13,7 +13,6 @@
   line-height: 22px;
   text-align: center;
   border: none;
-  margin-bottom: 37px;
   transition: opacity 1s ease;
 }
 
@@ -28,6 +27,6 @@
     padding: 14px 82px;
     font-size: 14px;
     line-height: 17px;
-    margin-bottom: 25px;
+    margin: 45px auto 25px;
   }
 }

@@ -1,0 +1,5 @@
+@media all and (max-width: 635px) {
+  .popup__error_type_add-photo {
+    max-width: 200px;
+  }
+}
