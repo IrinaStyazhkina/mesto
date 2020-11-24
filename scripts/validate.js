@@ -58,18 +58,6 @@ const setEventListeners = (form, config) => {
       toggleButtonState(button, !hasInvalidInput(inputList), config);
     });
   });
-  // closeBtn.addEventListener('click', function() {
-  //   inputList.forEach((input) => {
-  //     hideError(form, input, config);
-  //   })
-  // })
-  // document.addEventListener('keydown', (evt) => {
-  //   if(evt.key==='Escape') {
-  //     inputList.forEach((input) => {
-  //       hideError(form, input, config);
-  //     });
-  //   }
-  // });
 }
 
 const enableValidation = (config) => {
