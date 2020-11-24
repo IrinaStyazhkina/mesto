@@ -56,20 +56,41 @@ const photos = document.querySelector('.photos');
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape);
+  document.addEventListener('click', closeByOverlayClick);
+}
+
+const closeByOverlayClick = (evt) => {
+  const openedPopup = document.querySelector('.popup_opened');
+  if(openedPopup && evt.target === openedPopup) {
+    closePopup(openedPopup);
+  }
+}
+
+const closeByEscape = (evt, popup) => {
+  const openedPopup = document.querySelector('.popup_opened');
+  if(evt.key==='Escape') {
+    closePopup(openedPopup);
+  }
 }
 
 const closePopup = (popup) => {
-  if(popup.classList.contains('popup_opened')) {
-    popup.classList.remove('popup_opened');
-    const form = popup.querySelector('.popup__form'); 
-    if(form) {
-      const inputList = form.querySelectorAll('.popup__input');
-      inputList.forEach((input) => {
-        hideError(form, input, validationConfig);
-      });
-      form.reset();
-    } 
-  }  
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
+  document.removeEventListener('click', closeByOverlayClick);
+}
+
+const preparePopupForm = (popup) => {
+  const form = popup.querySelector('.popup__form'); 
+  const inputList = form.querySelectorAll('.popup__input');
+  inputList.forEach((input) => {
+    hideError(form, input, validationConfig);
+  });
+  form.reset();
+}
+
+const preparePhotoPopup = (popup) => {
+  
 }
 
 const editProfileFormSubmitHandler = (evt) => {
@@ -85,10 +106,12 @@ const createNewPhotoCard = (name, link) => {
 
   photoImage.src = link;
   photoElement.querySelector('.photo__description').textContent = name;
+  photoImage.alt = name;
 
   photoImage.addEventListener('click', function(evt){
     viewPhotoImage.src = link;
     viewPhotoDescription.textContent = name;
+    viewPhotoImage.alt = name;
     openPopup(viewPhotoPopup);
   });
 
@@ -116,45 +139,33 @@ const uploadImages = () => {
 
 uploadImages();
 
-document.addEventListener('click', (evt) => {
-  const target = evt.target;
-  switch(target) {
-    case profileEditButton: 
-      nameInput.value = profileName.textContent;
-      activityInput.value = profileActivity.textContent;
-      toggleButtonState( editProfileSaveBtn, true, validationConfig);
-      openPopup(editProfilePopup);
-      break;
-    case addPhotoButton: 
-      toggleButtonState(addPhotoSaveBtn, false, validationConfig);
-      openPopup(addPhotoPopup);
-      break;
-    case editProfileClosePopupBtn: 
-      closePopup(editProfilePopup);
-      break;
-    case addPhotoClosePopupBtn: 
-      closePopup(addPhotoPopup);
-      break;
-    case viewPhotoPopupCLoseBtn:
-      viewPhotoImage.src = '';
-      viewPhotoDescription.textContent = '';
-      closePopup(viewPhotoPopup);
-      break;
-  }
-
-  const openedPopup = document.querySelector('.popup_opened');
-  if(openedPopup && target === openedPopup) {
-    closePopup(openedPopup);
-  }
-
+profileEditButton.addEventListener('click', () => {
+  preparePopupForm(editProfilePopup);
+  nameInput.value = profileName.textContent;
+  activityInput.value = profileActivity.textContent;
+  toggleButtonState( editProfileSaveBtn, true, validationConfig);
+  openPopup(editProfilePopup);
 });
 
-document.addEventListener('keydown', (evt) => {
-  if(evt.key==='Escape') {
-    popupList.forEach((popup) => {
-      closePopup(popup);
-    });
-  }
+addPhotoButton.addEventListener('click', () => {
+  preparePopupForm(addPhotoPopup);
+  toggleButtonState(addPhotoSaveBtn, false, validationConfig);
+  openPopup(addPhotoPopup);
+});
+
+editProfileClosePopupBtn.addEventListener('click', () => {
+  closePopup(editProfilePopup);
+});
+
+addPhotoClosePopupBtn.addEventListener('click', () => {
+  closePopup(addPhotoPopup);
+});
+
+viewPhotoPopupCLoseBtn.addEventListener('click', () => {
+  viewPhotoImage.src = '';
+  viewPhotoDescription.textContent = '';
+  viewPhotoImage.alt = '';
+  closePopup(viewPhotoPopup);
 });
 
 editProfileForm.addEventListener('submit', editProfileFormSubmitHandler);
