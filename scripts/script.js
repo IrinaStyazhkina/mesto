@@ -67,7 +67,7 @@ const closeByOverlayClick = (evt) => {
   }
 }
 
-const closeByEscape = (evt, popup) => {
+const closeByEscape = (evt) => {
   const openedPopup = document.querySelector('.popup_opened');
   if(evt.key==='Escape') {
     closePopup(openedPopup);
@@ -87,10 +87,6 @@ const preparePopupForm = (popup) => {
     hideError(form, input, validationConfig);
   });
   form.reset();
-}
-
-const preparePhotoPopup = (popup) => {
-  
 }
 
 const editProfileFormSubmitHandler = (evt) => {
