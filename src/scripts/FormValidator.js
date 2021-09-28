@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(config, form) {
       this._config = config;
       this._form = form;
@@ -46,7 +46,6 @@ export class FormValidator {
   _setEventListeners() {
     const inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
     const button = this._form.querySelector(this._config.submitButtonSelector);
-    const closeBtn = this._form.querySelector(this._config.closeButtonSelector);
     const self = this;
     inputList.forEach(function(input) {
       input.addEventListener('input', function() {
@@ -61,5 +60,16 @@ export class FormValidator {
         evt.preventDefault();
       });
       this._setEventListeners();
+  }
+
+  resetErrorFields() {
+    const inputList = this._form.querySelectorAll('.popup__input');
+    inputList.forEach((input) => {
+      const error = this._form.querySelector(`#${input.id}-error`);
+      input.classList.remove(this._config.inputErrorClass);
+      error.textContent ='';
+      error.classList.remove(this._config.errorClass);
+    });
+    this._form.reset();
   }
 }

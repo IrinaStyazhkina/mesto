@@ -1,10 +1,9 @@
-import {viewPhotoImage, viewPhotoDescription, openPopup, viewPhotoPopup} from './index.js';
-
-export class Card {
-  constructor(name, link, templateSelector) {
-      this._name = name;
-      this._link = link;
+export default class Card {
+  constructor({data, handleCardClick}, templateSelector) {
+      this._name = data.name;
+      this._link = data.link;
       this._templateSelector = templateSelector;
+      this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -29,11 +28,8 @@ export class Card {
   _setImageClickEventListener() {
     const self = this;
     this._photoImage = this._element.querySelector('.photo__image');
-    this._photoImage.addEventListener('click', function(){
-      viewPhotoImage.src = self._link;
-      viewPhotoDescription.textContent = self._name;
-      viewPhotoImage.alt = self._name;
-      openPopup(viewPhotoPopup);
+    this._photoImage.addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link);
     });
   }
 
@@ -47,7 +43,7 @@ export class Card {
       this._element = this._getTemplate();
       this._setEventListeners();
       this._photoImage.src = this._link;
-      this._photoImage.alt = name;
+      this._photoImage.alt = this._name;
       this._element.querySelector('.photo__description').textContent = this._name;
 
       return this._element;  
