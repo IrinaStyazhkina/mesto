@@ -1,0 +1,8 @@
+.photo__like-wrap {
+    display: flex;
+    max-width: 22px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }

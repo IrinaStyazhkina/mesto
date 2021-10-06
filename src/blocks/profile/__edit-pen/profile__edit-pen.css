@@ -1,0 +1,24 @@
+.profile__edit-pen {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(../../../images/pen.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute; 
+    margin: 3.75px 30px 3.75px 0;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+@media all and (max-width: 700px) {
+    .profile__edit-pen {
+      margin: 3.75px 0;
+    }
+  }
+
+.profile__edit-pen:hover {
+    cursor: pointer;
+    opacity: 1;
+}
