@@ -1,7 +1,7 @@
 export default class Api {
     constructor(options) {
         this._baseUrl = options.baseUrl;
-        this._token = options.token;
+        this._headers = options.headers;
     }
 
     // users/me
@@ -9,53 +9,32 @@ export default class Api {
     getProfileInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
             "method": "GET",
-            "headers": {
-                "authorization": `${this._token}`,
-                'Content-Type': 'application/json'
-            }
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(res.status + " " + res.statusText);
+            "headers": this._headers
         })
+        .then(this._handleServerResponse)
     }
 
     editProfile(name, about) {
         return fetch(`${this._baseUrl}/users/me`, {
             "method": "PATCH",
-            "headers": {
-                "authorization": `${this._token}`,
-                'Content-Type': 'application/json'
-            },
+            "headers": this._headers,
             "body": JSON.stringify({
                 name: `${name}`,
                 about: `${about}`
             })
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(res.status + " " + res.statusText);
         })
+        .then(this._handleServerResponse)
     }
 
     editAvatar(avatarLink) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             "method": "PATCH",
-            "headers": {
-                "authorization": `${this._token}`,
-                'Content-Type': 'application/json'
-            },
+            "headers": this._headers,
             "body": JSON.stringify({
                 avatar: `${avatarLink}`
             })
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(res.status + " " + res.statusText);
         })
+        .then(this._handleServerResponse)
     }
 
     // cards
@@ -63,86 +42,48 @@ export default class Api {
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
             "method": "GET",
-            "headers": {
-                "authorization": `${this._token}`,
-                'Content-Type': 'application/json'
-            }
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(res.status + " " + res.statusText);
+            "headers": this._headers
         })
+        .then(this._handleServerResponse)
     }
 
     addCard(name, link) {
         return fetch(`${this._baseUrl}/cards`, {
             "method": "POST",
-            "headers": {
-                "authorization": `${this._token}`,
-                'Content-Type': 'application/json'
-            },
+            "headers": this._headers,
             "body": JSON.stringify({
                 name: `${name}`,
                 link: `${link}`
             })
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(res.status + " " + res.statusText);
         })
+        .then(this._handleServerResponse)
     }
 
     deleteCard(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
             "method": "DELETE",
-            "headers": {
-                "authorization": `${this._token}`,
-                'Content-Type': 'application/json'
-            }
+            "headers": this._headers
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(res.status + " " + res.statusText);
-        })
+        .then(this._handleServerResponse)
     }
 
     addLike(cardId) {
         return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
             "method": "PUT",
-            "headers": {
-                "authorization": `${this._token}`,
-                'Content-Type': 'application/json'
-            }
+            "headers": this._headers
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(res.status + " " + res.statusText);
-        })
+        .then(this._handleServerResponse)
     }
 
     removeLike(cardId) {
         return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
             "method": "DELETE",
-            "headers": {
-                "authorization": `${this._token}`,
-                'Content-Type': 'application/json'
-            }
+            "headers": this._headers
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(res.status + " " + res.statusText);
-        })
+        .then(this._handleServerResponse)
     }
 
-    _handleServerResponse (res) {
+    _handleServerResponse(res) {
         if(res.ok) {
             return res.json();
         }

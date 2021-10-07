@@ -34,7 +34,6 @@ export default class Card {
       } else {
         this._handleCardAddLike(this._cardId, this);
       }
-      evt.target.classList.toggle('photo__like_active');
     });
   }
 
@@ -54,6 +53,10 @@ export default class Card {
 
   setLikesCount = (count) => {
     this._likesCounter.textContent = count;
+  }
+
+  toggleLikeButton = () => {
+    this._likeBtn.classList.toggle('photo__like_active')
   }
 
   deleteCard = () =>  {

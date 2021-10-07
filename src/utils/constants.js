@@ -24,6 +24,8 @@ export const config = {
 
 export const apiConfig = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-28',
-  token: '293a0c2f-5c40-49bf-a976-5ae5443f2d33',
-  userId: 'f16a34b5394cfefae4df8840'
+  headers: {
+    "authorization": '293a0c2f-5c40-49bf-a976-5ae5443f2d33',
+    'Content-Type': 'application/json'
+  }
 }

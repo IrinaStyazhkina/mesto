@@ -67,6 +67,5 @@ export default class FormValidator {
     this._inputList.forEach((input) => {
       this._hideError(input);
     });
-    this._form.reset();
   }
 }
