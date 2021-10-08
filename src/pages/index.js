@@ -89,7 +89,7 @@ const addPhotoPopup = new PopupWithForm('.popup_type_add-photo',
     })
     .catch((err) => console.error(err))
     .finally(() => {
-      editAvatarPopup.toggleButtonText("Создать");
+      addPhotoPopup.toggleButtonText("Создать");
     });
   }
 });
