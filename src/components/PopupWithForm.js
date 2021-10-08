@@ -14,12 +14,8 @@ export default class PopupWithForm extends Popup {
     super.setEventListeners();
   }
 
-  toggleButtonText() {
-    if(this._submitButton.textContent === "Сохранить")  {
-      this._submitButton.textContent = "Сохранение...";
-    } else {
-      this._submitButton.textContent = "Сохранить"
-    }
+  toggleButtonText(text) {
+    this._submitButton.textContent = text;
   }
 
   close() {

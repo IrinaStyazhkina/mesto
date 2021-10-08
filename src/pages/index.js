@@ -48,7 +48,7 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
 const editProfilePopup = new PopupWithForm('.popup_type_edit-profile',
   {
   formSubmit: (values) => {
-    editProfilePopup.toggleButtonText();
+    editProfilePopup.toggleButtonText("Сохранение...");
     api.editProfile(values.name, values.activity).then(
       data => {
         userInfo.setUserInfo(data);
@@ -56,7 +56,7 @@ const editProfilePopup = new PopupWithForm('.popup_type_edit-profile',
       })
       .catch((err) => console.error(err))
       .finally(() => {
-        editProfilePopup.toggleButtonText();
+        editProfilePopup.toggleButtonText("Сохранить");
       });
   }
 });
@@ -64,7 +64,7 @@ const editProfilePopup = new PopupWithForm('.popup_type_edit-profile',
 //Изменение аватара
 const editAvatarPopup = new PopupWithForm('.popup_type_edit-avatar', {
   formSubmit: (values) => {
-    editAvatarPopup.toggleButtonText();
+    editAvatarPopup.toggleButtonText("Сохранение...");
     api.editAvatar(values.avatar).then(
       data => {
       userInfo.setUserAvatar(data);
@@ -72,7 +72,7 @@ const editAvatarPopup = new PopupWithForm('.popup_type_edit-avatar', {
     })
     .catch((err) => console.error(err))
     .finally(() => {
-      editAvatarPopup.toggleButtonText();
+      editAvatarPopup.toggleButtonText("Сохранить");
     });
   }
 });
@@ -81,12 +81,16 @@ const editAvatarPopup = new PopupWithForm('.popup_type_edit-avatar', {
 const addPhotoPopup = new PopupWithForm('.popup_type_add-photo',
   {
   formSubmit: (values) => {
+    addPhotoPopup.toggleButtonText("Сохранение...")
     api.addCard(values.name, values.link).then(data => {
       const newCard = createCard(data);
       cards.addItem(newCard);
       addPhotoPopup.close()
     })
     .catch((err) => console.error(err))
+    .finally(() => {
+      editAvatarPopup.toggleButtonText("Создать");
+    });
   }
 });
 const viewPhotoPopup = new PopupWithImage('.popup_type_view-photo');
